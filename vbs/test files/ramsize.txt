@@ -1,0 +1,27 @@
+' Display the RAM size in the machine
+strQuery = "Select TotalPhysicalMemory From Win32_LogicalMemoryConfiguration"
+'Now execute the query.
+Call ExecuteQuery(objService, strQuery)
+Private Sub ExecuteQuery(objService, strQuery)
+
+    ON ERROR RESUME NEXT
+
+    Dim objEnumerator, objInstance, strMessage
+
+    Set objEnumerator = objService.ExecQuery(strQuery)
+
+    For Each objInstance in objEnumerator
+        If Err.Number Then
+            Err.Clear
+        Else
+            If objInstance is nothing Then
+                Exit Sub
+            Else
+                strMessage = Space(6) & objInstance.TotalPhysicalMemory & " KB"
+                Wscript.Echo strMessage
+            End If
+        End If
+    Next
+
+End Sub
+

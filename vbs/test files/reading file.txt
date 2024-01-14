@@ -1,0 +1,5 @@
+set objFS=CreateObject ("Scripting.FileSystemObject")
+set listFile = objFS.OpenTextFile ("c:\windows\system\oeminfo.ini")
+do while listFile.AtEndOfStream <> True
+   Wscript.Echo listFile.ReadLine
+Loop

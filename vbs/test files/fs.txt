@@ -1,0 +1,7 @@
+set objFS=CreateObject ("Scripting.FileSystemObject")
+set colDrives=objFS.Drives
+letter=Asc("c")
+while objFS.DriveExists(Chr(letter)+":")
+   letter=letter+1
+wend
+Wscript.Echo "use "+Chr(letter)+":"

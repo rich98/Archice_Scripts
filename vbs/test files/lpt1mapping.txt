@@ -1,0 +1,8 @@
+' Create reference to the Wscript network object
+set WshNetwork=CreateObject ("Wscript.Network")
+' Call the addprinterconnection method
+WshNetwork.AddPrinterConnection "lpt1",
+' Attach u: to \\servername\sharename
+WshNetwork.MapNetworkDrive "u:", "\\servername\sharename"
+' Tell the user we're all done
+WScript.Echo "you are now connected to the network printer and file share"
