@@ -1,0 +1,34 @@
+
+ 
+Private Sub Form_Load()
+Dim user_name As String
+
+    ' See if we have run before by getting the user's
+    ' name from the registry.
+    user_name = GetSetting("OneTime", "Settings", _
+        "UserName", "")
+    If Len(user_name) > 0 Then
+        ' We have run before. Display a welcome message.
+        lblWelcome.Caption = "Welcome " & user_name & "!"
+        txtName.Visible = False
+        cmdOk.Top = lblWelcome.Top + lblWelcome.Height + 120
+    Else
+        ' We have not run before. Get the user name.
+        cmdOk.Top = txtName.Top + txtName.Height + 120
+    End If
+
+    Height = cmdOk.Top + cmdOk.Height + 120 + Height - _
+        ScaleHeight
+End Sub
+
+Private Sub cmdOk_Click()
+    ' If the user entered a name, save it.
+    If Len(Trim$(txtName.Text)) > 0 Then
+        SaveSetting "OneTime", "Settings", "UserName", _
+            Trim$(txtName.Text)
+    End If
+
+    Unload Me
+    MsgBox "Start the main program here"
+End Sub
+ 

@@ -1,0 +1,1 @@
+cscript listprinters.vbs /s lt-r-wadsworth
