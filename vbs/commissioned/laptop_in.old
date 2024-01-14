@@ -1,0 +1,10 @@
+echo off
+
+
+REM ****laptop user doc****
+
+xcopy "\\forum10\hotfix$\Laptop User Manual v1.doc" "C:\Documents and Settings\All Users\Desktop" /y
+
+:end
+
+
