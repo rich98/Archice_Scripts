@@ -1,0 +1,1 @@
+net use lpt1 \\rita-harris\rita
